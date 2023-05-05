@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="VentanaRegistro">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="src.VentanaRegistro">
   <grid id="27dc6" binding="Panel" layout-manager="GridLayoutManager" row-count="11" column-count="5" same-size-horizontally="true" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="5" bottom="5" right="10"/>
     <constraints>
-      <xy x="20" y="20" width="789" height="768"/>
+      <xy x="20" y="20" width="1194" height="768"/>
     </constraints>
     <properties/>
     <border type="none"/>
