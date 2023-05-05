@@ -7,11 +7,10 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class VentanaRegistro extends JFrame {
-    private JTextField txtID;
-    private JTextField txtNombre;
+    public class VentanaRegistro extends JFrame {
+        private JTextField txtID;
+        private JTextField txtNombre;
     private JComboBox cbxDepto;
     private JButton btnGuardar;
     private JTextField txtFecha;
