@@ -40,7 +40,7 @@ public class Vehiculo {
         return color;
     }
 
-    // Setter
+    // Setters
 
     public void setIdVehiculo(int idVehiculo) {
         this.idVehiculo = idVehiculo;
