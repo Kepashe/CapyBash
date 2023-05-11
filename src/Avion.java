@@ -8,7 +8,7 @@ public class Avion extends Vehiculo{
     @Override
     public String toString() {
         return "Barco{" +
-                "idVehiculo=" + matricula +
+                "matricula=" + matricula +
                 ", nombre='" + nombre + '\'' +
                 ", color='" + color + '\'' +
                 ", longitud='" + longitud + '\'' +
@@ -17,8 +17,8 @@ public class Avion extends Vehiculo{
     }
 
     // Constructores
-    public Avion(String idVehiculo, String nombre, String color, double longitud, int cantPasajeros) {
-        super(idVehiculo, nombre, color);
+    public Avion(String matricula, String nombre, String color, double longitud, int cantPasajeros) {
+        super(matricula, nombre, color);
         this.longitud = longitud;
         this.cantPasajeros = cantPasajeros;
     }
