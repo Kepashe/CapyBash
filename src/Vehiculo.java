@@ -2,7 +2,7 @@ package src;
 
 public class Vehiculo {
     // Atributos
-    public int idVehiculo;
+    public String matricula;
     public String nombre;
     public String color;
 
@@ -10,7 +10,7 @@ public class Vehiculo {
     @Override
     public String toString() {
         return "Vehiculo{" +
-                "idVehiculo=" + idVehiculo +
+                "matricula=" + matricula +
                 ", nombre='" + nombre + '\'' +
                 ", color='" + color +
                 '}';
@@ -21,15 +21,15 @@ public class Vehiculo {
 
     }
 
-    public Vehiculo(int idVehiculo, String nombre, String color) {
-        this.idVehiculo = idVehiculo;
+    public Vehiculo(String matricula, String nombre, String color) {
+        this.matricula = matricula;
         this.nombre = nombre;
         this.color = color;
     }
 
     //Getters
-    public int getIdVehiculo() {
-        return idVehiculo;
+    public String getMatricula() {
+        return matricula;
     }
 
     public String getNombre() {
@@ -42,8 +42,8 @@ public class Vehiculo {
 
     // Setters
 
-    public void setIdVehiculo(int idVehiculo) {
-        this.idVehiculo = idVehiculo;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public void setNombre(String nombre) {

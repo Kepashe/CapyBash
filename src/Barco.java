@@ -8,7 +8,7 @@ public class Barco extends Vehiculo{
     @Override
     public String toString() {
         return "Barco{" +
-                "idVehiculo=" + idVehiculo +
+                "idVehiculo=" + matricula +
                 ", nombre='" + nombre + '\'' +
                 ", color='" + color + '\'' +
                 ", eslora='" + eslora + '\'' +
@@ -17,7 +17,7 @@ public class Barco extends Vehiculo{
     }
 
     //Constructores
-    public Barco(int idVehiculo, String nombre, String color, double eslora, double manga) {
+    public Barco(String idVehiculo, String nombre, String color, double eslora, double manga) {
         super(idVehiculo, nombre, color);
         this.eslora = eslora;
         this.manga = manga;

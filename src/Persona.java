@@ -25,6 +25,7 @@ public class Persona {
                 ", dptoResidencia='" + dptoResidencia + '\'' +
                 ", cantHijos=" + cantHijos +
                 ", fechaNacimiento=" + fechaNacimiento +
+                ", vehiculos=" + vehiculos +
                 '}';
     }
 
