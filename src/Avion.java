@@ -17,7 +17,6 @@ public class Avion extends Vehiculo{
     }
 
     // Constructores
-
     public Avion(int idVehiculo, String nombre, String color, double longitud, int cantPasajeros) {
         super(idVehiculo, nombre, color);
         this.longitud = longitud;

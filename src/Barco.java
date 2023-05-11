@@ -17,10 +17,6 @@ public class Barco extends Vehiculo{
     }
 
     //Constructores
-    public Barco() {
-
-    }
-
     public Barco(int idVehiculo, String nombre, String color, double eslora, double manga) {
         super(idVehiculo, nombre, color);
         this.eslora = eslora;
