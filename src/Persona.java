@@ -1,6 +1,8 @@
 package src;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Persona {
     // Atributos
@@ -12,6 +14,7 @@ public class Persona {
     private byte cantHijos;
     private LocalDate fechaNacimiento;
 
+    private List<Vehiculo> vehiculos;
 
     @Override
     public String toString() {
@@ -27,6 +30,7 @@ public class Persona {
 
     // Constructores
     public Persona() {
+        vehiculos = new ArrayList<>();
     }
 
 
@@ -88,5 +92,10 @@ public class Persona {
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+    public void agregarVehiculo(Vehiculo vehiculo) {
+        vehiculos.add(vehiculo);
+    }
+
 }
 

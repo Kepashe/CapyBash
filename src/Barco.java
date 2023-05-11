@@ -12,7 +12,7 @@ public class Barco extends Vehiculo{
                 ", nombre='" + nombre + '\'' +
                 ", color='" + color + '\'' +
                 ", eslora='" + eslora + '\'' +
-                ", manga='" + manga +
+                ", manga='" + manga + '\'' +
                 '}';
     }
 
@@ -21,7 +21,8 @@ public class Barco extends Vehiculo{
 
     }
 
-    public Barco(double eslora, double manga) {
+    public Barco(int idVehiculo, String nombre, String color, double eslora, double manga) {
+        super(idVehiculo, nombre, color);
         this.eslora = eslora;
         this.manga = manga;
     }
