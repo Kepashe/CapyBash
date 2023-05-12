@@ -15,7 +15,7 @@ public class Vehiculo {
                 "matricula=" + matricula +
                 ", nombre='" + nombre + '\'' +
                 ", color='" + color +
-                ", propietario:" + propietario.getIdPersona()+
+                ", propietario:" + propietario.getNombre() + " " + propietario.getApellido() +
                 '}';
     }
 

@@ -4,11 +4,9 @@ import src.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.TabableView;
-import java.lang.reflect.Array;
-import java.time.LocalDate;
+
 import java.util.ArrayList;
-import java.util.LinkedList;
+
 
 public class AsignarVehiculo extends javax.swing.JFrame {
 
