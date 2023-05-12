@@ -416,7 +416,6 @@ public class AgregarPersona extends javax.swing.JFrame {
 
 
 
-
         btnGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -55,10 +55,6 @@ public class AsignarVehiculo extends javax.swing.JFrame {
 
     private void refrescarTablaVehiculosTodos() {
         TablaVehiculos.setModel(modeloVehiculos);
-        //Borrar todos los elementos del modelo
-        while (modeloVehiculos.getRowCount() > 0) {
-            modeloVehiculos.removeRow(0);
-        }
 
         //Recorremos el array y rellenamos la tabla
         for (Vehiculo vehiculo : listaVehiculos) {
