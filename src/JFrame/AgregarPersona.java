@@ -1,6 +1,7 @@
 
 package src.JFrame;
 
+import src.Main;
 import src.Persona;
 
 import java.awt.Panel;
@@ -20,10 +21,6 @@ import javax.swing.table.TableRowSorter;
 
 
 public class AgregarPersona extends javax.swing.JFrame {
-
-
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
@@ -274,7 +271,7 @@ public class AgregarPersona extends javax.swing.JFrame {
         );
 
         Panel.getAccessibleContext().setAccessibleName("");
-
+        refrescarTabla();
         pack();
     }// </editor-fold>
 
@@ -394,6 +391,8 @@ public class AgregarPersona extends javax.swing.JFrame {
 
     public AgregarPersona() {
         initComponents();
+        listaPersonas = Main.listaPersonasMain;
+        refrescarTabla();
 
         JFrame frame = new JFrame("VentanaRegistro");
         frame.setTitle("Ventana de Registro de Personas!");
