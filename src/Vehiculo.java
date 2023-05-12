@@ -6,6 +6,8 @@ public class Vehiculo {
     public String nombre;
     public String color;
 
+    public Persona propietario;
+
     // Metodo ToString
     @Override
     public String toString() {
@@ -13,7 +15,12 @@ public class Vehiculo {
                 "matricula=" + matricula +
                 ", nombre='" + nombre + '\'' +
                 ", color='" + color +
+                ", propietario:" + propietario.getIdPersona()+
                 '}';
+    }
+
+    public String toStringID() {
+        return propietario.getIdPersona() + "";
     }
 
     // Constructores
@@ -21,10 +28,11 @@ public class Vehiculo {
 
     }
 
-    public Vehiculo(String matricula, String nombre, String color) {
+    public Vehiculo(String matricula, String nombre, String color, Persona propietario) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.color = color;
+        this.propietario = propietario;
     }
 
     //Getters
@@ -40,6 +48,9 @@ public class Vehiculo {
         return color;
     }
 
+    public Persona getPropietario() {
+        return propietario;
+    }
     // Setters
 
     public void setMatricula(String matricula) {
@@ -52,6 +63,10 @@ public class Vehiculo {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public void setPropietario(Persona propietario) {
+        this.propietario = propietario;
     }
 }
 

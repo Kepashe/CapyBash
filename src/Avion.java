@@ -13,12 +13,15 @@ public class Avion extends Vehiculo{
                 ", color='" + color + '\'' +
                 ", longitud='" + longitud + '\'' +
                 ", cantPasajeros='" + cantPasajeros+ '\'' +
+                ", Dueño='" + propietario.getIdPersona()+ '\'' +
                 '}';
     }
 
     // Constructores
-    public Avion(String matricula, String nombre, String color, double longitud, int cantPasajeros) {
-        super(matricula, nombre, color);
+
+
+    public Avion(String matricula, String nombre, String color, Persona propietario, double longitud, int cantPasajeros) {
+        super(matricula, nombre, color, propietario);
         this.longitud = longitud;
         this.cantPasajeros = cantPasajeros;
     }

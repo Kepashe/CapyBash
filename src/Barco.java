@@ -13,12 +13,15 @@ public class Barco extends Vehiculo{
                 ", color='" + color + '\'' +
                 ", eslora='" + eslora + '\'' +
                 ", manga='" + manga + '\'' +
+                ", Dueño='" + propietario.getIdPersona()+ '\'' +
                 '}';
     }
 
     //Constructores
-    public Barco(String matricula, String nombre, String color, double eslora, double manga) {
-        super(matricula, nombre, color);
+
+
+    public Barco(String matricula, String nombre, String color, Persona propietario, double eslora, double manga) {
+        super(matricula, nombre, color, propietario);
         this.eslora = eslora;
         this.manga = manga;
     }
