@@ -169,13 +169,13 @@ public class AsignarVehiculo extends javax.swing.JFrame {
         });
 
         TablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
+                new Object [][] {
                         {null, null, null, null},
                         {null, null, null, null},
                         {null, null, null, null},
                         {null, null, null, null}
                 },
-                new String[]{
+                new String [] {
                         "ID", "Nombre", "Color", "Propietario"
                 }
         ));
@@ -187,7 +187,7 @@ public class AsignarVehiculo extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Filtro:");
 
-        cbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"ID", "Nombre", "Color", "Propietario", "Tipo"}));
+        cbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nombre", "Color", "Propietario", "Tipo" }));
         cbxFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxFiltroActionPerformed(evt);
@@ -208,26 +208,26 @@ public class AsignarVehiculo extends javax.swing.JFrame {
         jLabel6.setText("Botes");
 
         TablaVehiculos3.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
+                new Object [][] {
                         {null, null, null, null, null, null},
                         {null, null, null, null, null, null},
                         {null, null, null, null, null, null},
                         {null, null, null, null, null, null}
                 },
-                new String[]{
+                new String [] {
                         "ID", "Nombre", "Color", "Propietario", "Eslora", "Manga"
                 }
         ));
         jScrollPane4.setViewportView(TablaVehiculos3);
 
         TablaVehiculos4.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
+                new Object [][] {
                         {null, null, null, null, null, null},
                         {null, null, null, null, null, null},
                         {null, null, null, null, null, null},
                         {null, null, null, null, null, null}
                 },
-                new String[]{
+                new String [] {
                         "ID", "Nombre", "Color", "Propietario", "Longitud", "Cantidad Pasajeros"
                 }
         ));

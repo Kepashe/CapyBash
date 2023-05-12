@@ -145,7 +145,7 @@ public class AgregarPersona extends javax.swing.JFrame {
             }
         });
 
-        btnAsignarVehiculo.setText("Asignar Vehiculo");
+        btnAsignarVehiculo.setText("Lista Vehiculos");
         btnAsignarVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAsignarVehiculoActionPerformed(evt);
