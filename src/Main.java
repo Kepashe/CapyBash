@@ -6,16 +6,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
-
     public static ArrayList<Vehiculo> listaVehiculosMain = new ArrayList<>();
     public static ArrayList<Avion> listaVehiculosAvionesMain = new ArrayList<>();
     public static ArrayList<Barco> listaVehiculosBarcosMain = new ArrayList<>();
     public static ArrayList<Persona> listaPersonasMain = new ArrayList<>();
 
     public static void main(String []args) {
-
-
-
         Persona per1 = new Persona(1, "Juan", "Carlos", "Montevideo", (byte) 5, LocalDate.of(2000, 10, 25));
         Persona per2 = new Persona(2, "Alberto", "Fernandez", "Artigas", (byte) 5, LocalDate.of(2005, 06, 13));
         Persona per3 = new Persona(3, "Alex", "Pedro", "Rio Negro", (byte) 5, LocalDate.of(1997, 03, 29));
