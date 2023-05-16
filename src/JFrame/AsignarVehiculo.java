@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 
 public class AsignarVehiculo extends javax.swing.JFrame {
+    @Override
+    public void setDefaultCloseOperation(int operation) {
+        super.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }
 
     private ArrayList<Vehiculo> listaVehiculos = new ArrayList<>();
     private ArrayList<Avion> listaVehiculosAviones = new ArrayList<>();
