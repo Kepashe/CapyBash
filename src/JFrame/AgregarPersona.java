@@ -11,6 +11,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -411,39 +412,49 @@ public class AgregarPersona extends javax.swing.JFrame {
         modelo.addColumn("Fecha Nac.");
         refrescarTabla();
 
-
-
-
-
-
         btnGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 try {
-                    //Creamos una instancia de la clase Persona
+                    LocalDate fechaActual = LocalDate.now();
+                    // Creamos una instancia de la clase Persona
                     Persona persona = new Persona();
-                    persona.setIdPersona(Integer.parseInt(txtID.getText()));
+                    int idPersona = Integer.parseInt(txtID.getText());
+                    // Chequeamos que esa ID no exista ya
+                    boolean idsExistentes = listaPersonas.stream().anyMatch(p -> p.getIdPersona() == idPersona);
+                    if (idsExistentes) {
+                        JOptionPane.showMessageDialog(null, "Error: Ya existe esa ID.");
+                        return;
+                    }
                     persona.setNombre(txtNombre.getText());
                     persona.setApellido(txtApellido.getText());
                     // Obtener el valor del JSpinner y convertirlo a byte
                     byte cantHijos = ((Number) spnHijos.getValue()).byteValue();
+                    if (cantHijos < 0) {
+                        JOptionPane.showMessageDialog(null, "Error: El número de hijos debe ser mayor o igual a 0.");
+                        return;
+                    }
                     persona.setCantHijos(cantHijos);
-
-                    persona.setDptoResidencia(cbxDepto.getSelectedItem().toString()); //Guardamos el dato del comboBox
-
-                    String fechaStr = txtFecha.getText(); // Obtener la fecha como una cadena de texto
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // Crear un formateador de fechas para el formato "dd/MM/yyyy"
-                    LocalDate fechaNacimiento = LocalDate.parse(fechaStr, formatter); // Convertir la cadena de texto en un objeto LocalDate utilizando el formateador creado
-                    persona.setFechaNacimiento(fechaNacimiento);//Seteamos la fecha nacimiento colocada
-                    listaPersonas.add(persona); //Guardamos en el array
-//                JOptionPane.showMessageDialog(null, persona.toString());
-                    refrescarTabla();
-                }catch (Exception a){
-                    JOptionPane.showMessageDialog(null, "Error al guardar");
+                    persona.setDptoResidencia(cbxDepto.getSelectedItem().toString());
+                    // Obtenemos la fecha de nacimiento
+                    String fechaStr = txtFecha.getText();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDate fechaNacimiento = LocalDate.parse(fechaStr, formatter);
+                    // Control para no obtener fechas después de la fecha actual
+                    if (fechaNacimiento.isAfter(fechaActual)) {
+                        JOptionPane.showMessageDialog(null, "Error: La fecha ingresada es mayor a la fecha actual.");
+                    } else {
+                        persona.setFechaNacimiento(fechaNacimiento);
+                        listaPersonas.add(persona);
+                        refrescarTabla();
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Error: El ID es inválido.");
+                } catch (DateTimeParseException ex) {
+                    JOptionPane.showMessageDialog(null, "Error: Formato de fecha inválido.");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error al guardar.");
                 }
-
-
             }
         });
     }
@@ -460,7 +471,6 @@ public class AgregarPersona extends javax.swing.JFrame {
         while(modelo.getRowCount() > 0){
             modelo.removeRow(0);
         }
-
         //Recorremos el array y rellenamos la tabla
         for (Persona persona : listaPersonas){
             Object a[]=new Object[6];
@@ -472,9 +482,5 @@ public class AgregarPersona extends javax.swing.JFrame {
             a[5] = persona.getFechaNacimiento();
             modelo.addRow(a);
         }
-
-
-
     }
-
 }
