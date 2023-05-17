@@ -223,8 +223,6 @@ public class AltaVehiculos extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {
-        Menu menu = new Menu();
-
         // Cierra la ventana actual
         this.dispose();
     }
