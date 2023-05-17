@@ -1,4 +1,4 @@
-package src;
+package src.clases;
 
 public class Avion extends Vehiculo{
     // Atributos

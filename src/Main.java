@@ -1,6 +1,11 @@
 package src;
 
-import src.JFrame.AgregarPersona;
+import src.clases.Avion;
+import src.clases.Barco;
+import src.clases.Persona;
+import src.clases.Vehiculo;
+import src.ui.AltaPersonas;
+import src.ui.Menu;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,8 +27,6 @@ public class Main {
         listaPersonasMain.add(per3);
 
 
-
-
         Barco bar1 = new Barco("M4c442", "Perla Negra", "Verde Limo", per1, 34.5, 593.2);
         Barco bar2 = new Barco("423cCD", "Manza Nutia", "Oxicdo", per2, 56, 15.55);
         Barco bar3 = new Barco("5428DE", "Mathias", "Color agua", per3, 34.5, 15.5);
@@ -42,6 +45,6 @@ public class Main {
 
         System.out.println(per1);
 
-        AgregarPersona agregarPersona = new AgregarPersona();
+        Menu menu = new Menu();
     }
 }

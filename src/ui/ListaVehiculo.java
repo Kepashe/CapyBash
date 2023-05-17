@@ -1,14 +1,14 @@
-package src.JFrame;
+package src.ui;
 
 import src.*;
-
-import javax.swing.*;
+import src.clases.Avion;
+import src.clases.Barco;
+import src.clases.Vehiculo;
 import javax.swing.table.DefaultTableModel;
-
 import java.util.ArrayList;
 
 
-public class AsignarVehiculo extends javax.swing.JFrame {
+public class ListaVehiculo extends javax.swing.JFrame {
     @Override
     public void setDefaultCloseOperation(int operation) {
         super.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -23,7 +23,7 @@ public class AsignarVehiculo extends javax.swing.JFrame {
     DefaultTableModel modeloVehiculosBarco = new DefaultTableModel();
 
 
-    public AsignarVehiculo() {
+    public ListaVehiculo() {
         initComponents();
         listaVehiculos = Main.listaVehiculosMain;
         listaVehiculosAviones = Main.listaVehiculosAvionesMain;
@@ -85,17 +85,6 @@ public class AsignarVehiculo extends javax.swing.JFrame {
             modeloVehiculos.addRow(b);
         }
 
-//        TablaVehiculos.setModel(modeloVehiculos);
-//
-//        //Recorremos el array y rellenamos la tabla
-//        for (Vehiculo avion : listaVehiculosAviones) {
-//            Object b[] = new Object[4];
-//            b[0] = avion.getMatricula();
-//            b[1] = avion.getNombre();
-//            b[2] = avion.getColor();
-//            b[3] = avion.toStringID();
-//            modeloVehiculos.addRow(b);
-//        }
     }
 
     private void refrescarTablaVehiculosBarcos() {
@@ -115,23 +104,14 @@ public class AsignarVehiculo extends javax.swing.JFrame {
         }
 
         TablaVehiculos.setModel(modeloVehiculos);
-
-//        //Recorremos el array y rellenamos la tabla
-//        for (Vehiculo barco : listaVehiculosBarcos) {
-//            Object c[] = new Object[4];
-//            c[0] = barco.getMatricula();
-//            c[1] = barco.getNombre();
-//            c[2] = barco.getColor();
-//            c[3] = barco.toStringID();
-//            modeloVehiculos.addRow(c);
-//        }
     }
 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-
+        setVisible(true);
+        setResizable(false);
         jPanel1 = new javax.swing.JPanel();
         btnAplicarFiltro = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -322,10 +302,9 @@ public class AsignarVehiculo extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AsignarVehiculo().setVisible(true);
+                new ListaVehiculo().setVisible(true);
 
             }
         });

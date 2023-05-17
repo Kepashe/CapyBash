@@ -1,0 +1,237 @@
+package src.ui;
+
+public class Menu extends javax.swing.JFrame {
+
+    public Menu() {
+        initComponents();
+        setTitle("Menú");
+        setLocationRelativeTo(null);
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+    private void initComponents() {
+        setVisible(true);
+        setResizable(false);
+        jPanel1 = new javax.swing.JPanel();
+        lblCapyBash = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        lblAlexis = new javax.swing.JLabel();
+        lblLeandro = new javax.swing.JLabel();
+        lblBernardo = new javax.swing.JLabel();
+        lblFacundo = new javax.swing.JLabel();
+        lblJuan = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnAltaPersonas = new javax.swing.JButton();
+        btnAltaVehiculos = new javax.swing.JButton();
+        btnListaVehiculos = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(221, 138, 36));
+
+        lblCapyBash.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        lblCapyBash.setForeground(new java.awt.Color(255, 255, 255));
+        lblCapyBash.setText("CapyBash");
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("logo-transparencia.png"))); // NOI18N
+
+        lblAlexis.setForeground(new java.awt.Color(255, 255, 255));
+        lblAlexis.setText("Alexis Borges");
+
+        lblLeandro.setForeground(new java.awt.Color(255, 255, 255));
+        lblLeandro.setText("Leandro Chineli");
+
+        lblBernardo.setForeground(new java.awt.Color(255, 255, 255));
+        lblBernardo.setText("Bernardo Montaña");
+
+        lblFacundo.setForeground(new java.awt.Color(255, 255, 255));
+        lblFacundo.setText("Facundo Rodríguez ");
+
+        lblJuan.setForeground(new java.awt.Color(255, 255, 255));
+        lblJuan.setText("Juan Calviño");
+
+        jPanel2.setBackground(new java.awt.Color(236, 183, 64));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        btnAltaPersonas.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        btnAltaPersonas.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
+        btnAltaPersonas.setForeground(new java.awt.Color(255, 255, 255));
+        btnAltaPersonas.setText("Alta de Personas");
+        btnAltaPersonas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAltaPersonas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAltaPersonasActionPerformed(evt);
+            }
+        });
+
+        btnAltaVehiculos.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        btnAltaVehiculos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
+        btnAltaVehiculos.setForeground(new java.awt.Color(255, 255, 255));
+        btnAltaVehiculos.setText("Alta de Vehiculos");
+        btnAltaVehiculos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAltaVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAltaVehiculosActionPerformed(evt);
+            }
+        });
+
+        btnListaVehiculos.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        btnListaVehiculos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
+        btnListaVehiculos.setForeground(new java.awt.Color(255, 255, 255));
+        btnListaVehiculos.setText("Lista de Vehiculos");
+        btnListaVehiculos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnListaVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaVehiculosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap(80, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnListaVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnAltaVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnAltaPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(79, 79, 79))
+        );
+        jPanel2Layout.setVerticalGroup(
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(btnAltaPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAltaVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnListaVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(55, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblCapyBash)
+                                        .addComponent(lblAlexis)
+                                        .addComponent(lblLeandro)
+                                        .addComponent(lblBernardo)
+                                        .addComponent(lblFacundo)
+                                        .addComponent(lblJuan))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(lblLogo))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(20, 20, 20)
+                                                .addComponent(lblCapyBash)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(lblAlexis)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblLeandro)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblBernardo)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblFacundo)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblJuan)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>
+
+    private void btnAltaPersonasActionPerformed(java.awt.event.ActionEvent evt) {
+        // Crea una nueva instancia de la ventana de AltaPersonas
+        AltaPersonas altaPersonas = new AltaPersonas();
+        // el objeto se hace visible por sí mismo
+        // Cierra la ventana actual
+        this.dispose();
+    }
+
+    private void btnAltaVehiculosActionPerformed(java.awt.event.ActionEvent evt) {
+        // Crea una nueva instancia de la ventana de alta de vehículos
+        AltaVehiculos altaVehiculos = new AltaVehiculos();
+        // Cierra la ventana actual
+        this.dispose();
+    }
+
+    private void btnListaVehiculosActionPerformed(java.awt.event.ActionEvent evt) {
+        // Crea una nueva instancia de la ventana de lista de vehículos
+        ListaVehiculo listaVehiculo = new ListaVehiculo();
+        // la hacemos visible
+        listaVehiculo.setVisible(true);
+        // Cierra la ventana actual
+        this.dispose();
+    }
+
+    public static void main(String args[]) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Menu().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify
+    private javax.swing.JButton btnAltaPersonas;
+    private javax.swing.JButton btnAltaVehiculos;
+    private javax.swing.JButton btnListaVehiculos;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblAlexis;
+    private javax.swing.JLabel lblBernardo;
+    private javax.swing.JLabel lblCapyBash;
+    private javax.swing.JLabel lblFacundo;
+    private javax.swing.JLabel lblJuan;
+    private javax.swing.JLabel lblLeandro;
+    private javax.swing.JLabel lblLogo;
+    // End of variables declaration
+}
