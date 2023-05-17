@@ -28,16 +28,16 @@ public class Main {
 
 
         Barco bar1 = new Barco("M4c442", "Perla Negra", "Verde Limo", per1, 34.5, 593.2);
-        Barco bar2 = new Barco("423cCD", "Manza Nutia", "Oxicdo", per2, 56, 15.55);
+        Barco bar2 = new Barco("423cCD", "Manza Nutia", "Óxido", per2, 56, 15.55);
         Barco bar3 = new Barco("5428DE", "Mathias", "Color agua", per3, 34.5, 15.5);
 
         listaVehiculosBarcosMain.add(bar1);
         listaVehiculosBarcosMain.add(bar2);
         listaVehiculosBarcosMain.add(bar3);
 
-        Avion av1 = new Avion("986c2", "JuanAirlains", "Verde Limo", per1, 34.5, 93);
-        Avion av2 = new Avion("M4542", "Avionsito", "Azul", per1, 34.5, 53);
-        Avion av3 = new Avion("DE4c2", "Agua", "Verde Limo", per3, 34.5, 59);
+        Avion av1 = new Avion("986c2", "Juan Airlines", "Verde Limo", per1, 34.5, 93);
+        Avion av2 = new Avion("M4542", "Avioncito", "Azul", per1, 35.5, 53);
+        Avion av3 = new Avion("DE4c2", "Aguas Tenebrosas", "Verde Musgo", per3, 36.5, 59);
 
         listaVehiculosAvionesMain.add(av1);
         listaVehiculosAvionesMain.add(av2);

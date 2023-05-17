@@ -25,7 +25,6 @@ public class AltaPersonas extends javax.swing.JFrame {
 
     public AltaPersonas() {
         initComponents();
-
         listaPersonas = Main.listaPersonasMain;
         refrescarTabla();
 
@@ -448,9 +447,6 @@ public class AltaPersonas extends javax.swing.JFrame {
     }
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {
-        // Crea una nueva instancia de la ventana de lista de vehículos
-        Menu menu = new Menu();
-
         // Cierra la ventana actual
         this.dispose();
     }

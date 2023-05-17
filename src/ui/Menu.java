@@ -9,6 +9,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         setTitle("Menú");
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
@@ -175,27 +176,54 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void btnAltaPersonasActionPerformed(java.awt.event.ActionEvent evt) {
-        // Crea una nueva instancia de la ventana de AltaPersonas
+        // Hace invisible la ventana actual
+        setVisible(false);
+        // Crear y mostrar el alta de personas
         AltaPersonas altaPersonas = new AltaPersonas();
-        // el objeto se hace visible por sí mismo
-        // Cierra la ventana actual
-        this.dispose();
+        // Modificamos la operación cuando se cierra la ventana directa.
+        altaPersonas.setDefaultCloseOperation(altaPersonas.DISPOSE_ON_CLOSE);
+        // Evento listener de operación de ventana.
+        altaPersonas.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                // Hace nuevamente visible el menú
+                setVisible(true);
+            }
+        });
     }
 
     private void btnAltaVehiculosActionPerformed(java.awt.event.ActionEvent evt) {
-        // Crea una nueva instancia de la ventana de alta de vehículos
+        // Hace invisible la ventana actual
+        setVisible(false);
+        // Crear y mostrar el alta de vehículos
         AltaVehiculos altaVehiculos = new AltaVehiculos();
-        // Cierra la ventana actual
-        this.dispose();
+        // Modificamos la operación cuando se cierra la ventana directa.
+        altaVehiculos.setDefaultCloseOperation(altaVehiculos.DISPOSE_ON_CLOSE);
+        // Evento listener de operación de ventana.
+        altaVehiculos.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                // Hace nuevamente visible el menú
+                setVisible(true);
+            }
+        });
     }
 
     private void btnListaVehiculosActionPerformed(java.awt.event.ActionEvent evt) {
-        // Crea una nueva instancia de la ventana de lista de vehículos
+        // Hace invisible la ventana actual
+        setVisible(false);
+        // Crear y mostrar la lista de vehiculos
         ListaVehiculo listaVehiculo = new ListaVehiculo();
-        // la hacemos visible
-        listaVehiculo.setVisible(true);
-        // Cierra la ventana actual
-        this.dispose();
+        // Modificamos la operación cuando se cierra la ventana directa.
+        listaVehiculo.setDefaultCloseOperation(listaVehiculo.DISPOSE_ON_CLOSE);
+        // Evento listener de operación de ventana.
+        listaVehiculo.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                // Hace nuevamente visible el menú
+                setVisible(true);
+            }
+        });
     }
 
     public static void main(String args[]) {
