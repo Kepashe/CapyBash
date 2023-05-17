@@ -43,8 +43,6 @@ public class Main {
         listaVehiculosAvionesMain.add(av2);
         listaVehiculosAvionesMain.add(av3);
 
-        System.out.println(per1);
-
         Menu menu = new Menu();
     }
 }

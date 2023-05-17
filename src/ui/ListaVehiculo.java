@@ -12,6 +12,7 @@ public class ListaVehiculo extends javax.swing.JFrame {
     @Override
     public void setDefaultCloseOperation(int operation) {
         super.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
     }
 
     private ArrayList<Vehiculo> listaVehiculos = new ArrayList<>();
@@ -293,6 +294,7 @@ public class ListaVehiculo extends javax.swing.JFrame {
     }
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {
+        Menu menu = new Menu();
         // Cierra la ventana actual
         this.dispose();
     }

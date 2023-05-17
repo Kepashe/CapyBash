@@ -32,7 +32,7 @@ public class AltaPersonas extends javax.swing.JFrame {
         setTitle("Alta de Personas");
         setContentPane(Panel);
         pack();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
 

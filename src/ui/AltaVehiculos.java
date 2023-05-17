@@ -6,11 +6,10 @@ public class AltaVehiculos extends javax.swing.JFrame {
 
     public AltaVehiculos() {
         initComponents();
-
-        setTitle("Alta de Personas");
+        setTitle("Alta de Vehiculos");
         setContentPane(jPanel1);
         pack();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -224,7 +223,6 @@ public class AltaVehiculos extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {
-        // Crea una nueva instancia de la ventana de lista de vehículos
         Menu menu = new Menu();
 
         // Cierra la ventana actual

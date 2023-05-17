@@ -1,7 +1,10 @@
 package src.ui;
 
-public class Menu extends javax.swing.JFrame {
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
+public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         setTitle("Menú");
