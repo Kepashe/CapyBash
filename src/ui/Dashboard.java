@@ -1,6 +1,8 @@
 package src.ui;
 
-    public class Dashboard extends javax.swing.JFrame {
+import javax.swing.*;
+
+public class Dashboard extends javax.swing.JFrame {
 
 
         public Dashboard() {
@@ -8,6 +10,7 @@ package src.ui;
             setTitle("Dashboard");
             setContentPane(jPanel1);
             pack();
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             setLocationRelativeTo(null);
             setVisible(true);
         }
@@ -255,7 +258,6 @@ package src.ui;
         }// </editor-fold>
 
         private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {
-            Menu menu = new Menu();
             // Cierra la ventana actual
             this.dispose();
         }

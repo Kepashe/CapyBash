@@ -244,11 +244,22 @@ public class Menu extends javax.swing.JFrame {
     }
 
     private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {
-        // Crea una nueva instancia de la ventana de lista de vehículos
+        /// Hace invisible la ventana actual
+        setVisible(false);
+        // Crear y mostrar el alta de personas
         Dashboard dashboard = new Dashboard();
-        // Cierra la ventana actual
-        this.dispose();
+        // Modificamos la operación cuando se cierra la ventana directa.
+        dashboard.setDefaultCloseOperation(dashboard.DISPOSE_ON_CLOSE);
+        // Evento listener de operación de ventana.
+        dashboard.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                // Hace nuevamente visible el menú
+                setVisible(true);
+            }
+        });
     }
+
 
     public static void main(String args[]) {
         try {
