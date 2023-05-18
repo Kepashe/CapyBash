@@ -9,6 +9,8 @@ import src.ui.Menu;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
     public static ArrayList<Vehiculo> listaVehiculosMain = new ArrayList<>();
@@ -16,18 +18,16 @@ public class Main {
     public static ArrayList<Barco> listaVehiculosBarcosMain = new ArrayList<>();
     public static ArrayList<Persona> listaPersonasMain = new ArrayList<>();
 
-    public static void main(String []args) {
+    public static void main(String[] args) {
         Persona per1 = new Persona(1, "Juan", "Carlos", "Montevideo", (byte) 5, LocalDate.of(2000, 10, 25));
         Persona per2 = new Persona(2, "Alberto", "Fernandez", "Artigas", (byte) 5, LocalDate.of(2005, 06, 13));
         Persona per3 = new Persona(3, "Alex", "Pedro", "Rio Negro", (byte) 5, LocalDate.of(1997, 03, 29));
-
 
         listaPersonasMain.add(per1);
         listaPersonasMain.add(per2);
         listaPersonasMain.add(per3);
 
-
-        Barco bar1 = new Barco("M4c442", "Perla Negra", "Verde Limo", per1, 34.5, 593.2);
+        Barco bar1 = new Barco("M4c442", "MANSOSOS Negra", "Verde Limo", per1, 34.5, 593.2);
         Barco bar2 = new Barco("423cCD", "Manza Nutia", "Óxido", per2, 56, 15.55);
         Barco bar3 = new Barco("5428DE", "Mathias", "Color agua", per3, 34.5, 15.5);
 
@@ -44,5 +44,38 @@ public class Main {
         listaVehiculosAvionesMain.add(av3);
 
         Menu menu = new Menu();
+
+        // Exportar los datos al archivo "datos.txt"
+        exportarDatos("datos.txt");
+    }
+
+    public static void exportarDatos(String nombreArchivo) {
+        try (FileWriter writer = new FileWriter(nombreArchivo)) {
+            // Exportar personas
+            writer.write("Personas:\n");
+            for (Persona persona : listaPersonasMain) {
+                writer.write(persona.toString());
+                writer.write("\n");
+            }
+
+            // Exportar barcos
+            writer.write("Barcos:\n");
+            for (Barco barco : listaVehiculosBarcosMain) {
+                writer.write(barco.toString());
+                writer.write("\n");
+            }
+
+            // Exportar aviones
+            writer.write("Aviones:\n");
+            for (Avion avion : listaVehiculosAvionesMain) {
+                writer.write(avion.toString());
+                writer.write("\n");
+            }
+
+            writer.flush();
+            System.out.println("Datos exportados exitosamente al archivo " + nombreArchivo);
+        } catch (IOException e) {
+            System.out.println("Error al exportar los datos: " + e.getMessage());
+        }
     }
 }
