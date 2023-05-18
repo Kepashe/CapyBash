@@ -45,6 +45,7 @@ public class AltaVehiculos extends javax.swing.JFrame {
         btnGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Persona per = new Persona();
                 try {
                     if (cbxTipo.getSelectedItem().toString() == "Tipo") {
                         JOptionPane.showMessageDialog(null, "Seleccione un tipo de vehículo");
@@ -55,8 +56,18 @@ public class AltaVehiculos extends javax.swing.JFrame {
                         barco.color = txtColor.getText().toString();
                         barco.eslora = Double.parseDouble(txtVari1.getText());
                         barco.manga = Double.parseDouble(txtVari2.getText());
-                        barco.propietario.setIdPersona(Integer.parseInt(txtDuenio.getText()));
-                        altaListaVehiculosBarcos.add(barco);
+                        per.setIdPersona(Integer.parseInt(txtDuenio.getText()));
+                        boolean encuentro = false;
+                        for (Persona persona : AltaPersonas.listaPersonas) {
+                            if(persona.getIdPersona() == per.getIdPersona()){
+                                barco.propietario = persona;
+                                encuentro = true;
+                                altaListaVehiculosBarcos.add(barco);
+                            }
+                        }
+                        if(encuentro == false){
+                            JOptionPane.showMessageDialog(null, "Error: La id de la persona ingresada no coincide con ninguna persona");
+                        }
                     } else if (cbxTipo.getSelectedItem().toString() == "Avion") {
                         Avion avion = new Avion();
                         avion.matricula = txtMatricula.getText().toString();
@@ -64,8 +75,18 @@ public class AltaVehiculos extends javax.swing.JFrame {
                         avion.color = txtColor.getText().toString();
                         avion.longitud = Double.parseDouble(txtVari1.getText());
                         avion.cantPasajeros = Integer.parseInt(txtVari2.getText());
-                        avion.propietario.setIdPersona(Integer.parseInt(txtDuenio.getText())); //arreglar
-                        altaListaVehiculosAviones.add(avion);
+                        per.setIdPersona(Integer.parseInt(txtDuenio.getText()));
+                        boolean encuentro = false;
+                        for (Persona persona : AltaPersonas.listaPersonas) {
+                            if(persona.getIdPersona() == per.getIdPersona()){
+                                avion.propietario = persona;
+                                encuentro = true;
+                                altaListaVehiculosAviones.add(avion);
+                            }
+                        }
+                        if(encuentro == false){
+                            JOptionPane.showMessageDialog(null, "Error: La id de la persona ingresada no coincide con ninguna persona");
+                        }
                     }
 
                 } catch (Exception e1){
