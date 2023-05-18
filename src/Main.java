@@ -45,37 +45,8 @@ public class Main {
 
         Menu menu = new Menu();
 
-        // Exportar los datos al archivo "datos.txt"
-        exportarDatos("datos.txt");
+
     }
 
-    public static void exportarDatos(String nombreArchivo) {
-        try (FileWriter writer = new FileWriter(nombreArchivo)) {
-            // Exportar personas
-            writer.write("Personas:\n");
-            for (Persona persona : listaPersonasMain) {
-                writer.write(persona.toString());
-                writer.write("\n");
-            }
 
-            // Exportar barcos
-            writer.write("Barcos:\n");
-            for (Barco barco : listaVehiculosBarcosMain) {
-                writer.write(barco.toString());
-                writer.write("\n");
-            }
-
-            // Exportar aviones
-            writer.write("Aviones:\n");
-            for (Avion avion : listaVehiculosAvionesMain) {
-                writer.write(avion.toString());
-                writer.write("\n");
-            }
-
-            writer.flush();
-            System.out.println("Datos exportados exitosamente al archivo " + nombreArchivo);
-        } catch (IOException e) {
-            System.out.println("Error al exportar los datos: " + e.getMessage());
-        }
-    }
 }

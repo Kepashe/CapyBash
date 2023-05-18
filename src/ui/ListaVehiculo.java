@@ -2,6 +2,7 @@ package src.ui;
 
 import src.clases.Avion;
 import src.clases.Barco;
+import src.clases.Persona;
 import src.clases.Vehiculo;
 
 import javax.swing.*;
@@ -10,6 +11,8 @@ import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -21,7 +24,6 @@ public class ListaVehiculo extends javax.swing.JFrame {
 
     private ArrayList<Avion> listaVehiculosAviones = new ArrayList<>();
     private ArrayList<Barco> listaVehiculosBarcos = new ArrayList<>();
-
     DefaultTableModel modeloVehiculos = new DefaultTableModel();
 
 
@@ -42,6 +44,13 @@ public class ListaVehiculo extends javax.swing.JFrame {
 
         actualizarTablas();
     }
+
+
+
+
+
+
+
     int cont = 0;
     public void actualizarTablas() {
         modeloVehiculos.setRowCount(0);
@@ -50,6 +59,7 @@ public class ListaVehiculo extends javax.swing.JFrame {
             String[] titulo = new String[]{"Matricula", "Nombre", "Color", "Propietario"};
             modeloVehiculos.setColumnIdentifiers(titulo);
             tblVehiculos.setModel(modeloVehiculos);
+
             refrescarTablaVehiculosTodos();
         } else if (cbxTipo.getSelectedItem().toString() == "Barcos") {
             String[] titulo = new String[]{"Matricula", "Nombre", "Color", "Propietario", "Eslora", "manga"};

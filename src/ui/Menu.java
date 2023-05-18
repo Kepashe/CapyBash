@@ -1,8 +1,16 @@
 package src.ui;
 
+import src.clases.Avion;
+import src.clases.Barco;
+import src.clases.Persona;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import static src.Main.*;
 
 public class Menu extends javax.swing.JFrame {
     public Menu() {
@@ -19,6 +27,7 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
         setVisible(true);
         setResizable(false);
+
         jPanel1 = new javax.swing.JPanel();
         lblCapyBash = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
@@ -32,6 +41,7 @@ public class Menu extends javax.swing.JFrame {
         btnAltaVehiculos = new javax.swing.JButton();
         btnListaVehiculos = new javax.swing.JButton();
         btnDashboard = new javax.swing.JButton();
+        btnExportar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,7 +52,6 @@ public class Menu extends javax.swing.JFrame {
         lblCapyBash.setText("CapyBash");
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("logo-transparencia.png"))); // NOI18N
-
         lblAlexis.setForeground(new java.awt.Color(255, 255, 255));
         lblAlexis.setText("Alexis Borges");
 
@@ -105,18 +114,34 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnExportar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        btnExportar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        btnExportar.setForeground(new java.awt.Color(255, 255, 255));
+        btnExportar.setText("Exportar datos ");
+        btnExportar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap(80, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                                        .addComponent(btnListaVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                                        .addComponent(btnAltaVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                                        .addComponent(btnAltaPersonas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(79, 79, 79))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                                                        .addComponent(btnListaVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                                                        .addComponent(btnAltaVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                                                        .addComponent(btnAltaPersonas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGap(79, 79, 79))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                .addComponent(btnExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(14, 14, 14))))
         );
         jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +154,9 @@ public class Menu extends javax.swing.JFrame {
                                 .addComponent(btnListaVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(17, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -191,6 +218,48 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>
+
+
+    //Método para exportar vehículos
+    public static void exportarDatos(String nombreArchivo) {
+        try (FileWriter writer = new FileWriter(nombreArchivo)) {
+            // Exportar personas
+            writer.write("Personas:\n");
+            for (Persona persona : listaPersonasMain) {
+                writer.write(persona.toString());
+                writer.write("\n");
+            }
+
+            // Exportar barcos
+            writer.write("Barcos:\n");
+            for (Barco barco : listaVehiculosBarcosMain) {
+                writer.write(barco.toString());
+                writer.write("\n");
+            }
+
+            // Exportar aviones
+            writer.write("Aviones:\n");
+            for (Avion avion : listaVehiculosAvionesMain) {
+                writer.write(avion.toString());
+                writer.write("\n");
+            }
+
+            writer.flush();
+            System.out.println("Datos exportados exitosamente al archivo " + nombreArchivo);
+        } catch (IOException e) {
+            System.out.println("Error al exportar los datos: " + e.getMessage());
+        }
+    }
+
+
+
+    private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {
+            // Exportar los datos al archivo "datos.txt"
+        exportarDatos("datos.txt");
+
+
+    }
+
 
     private void btnAltaPersonasActionPerformed(java.awt.event.ActionEvent evt) {
         // Hace invisible la ventana actual
@@ -300,5 +369,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel lblJuan;
     private javax.swing.JLabel lblLeandro;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JButton btnExportar;
     // End of variables declaration
 }
