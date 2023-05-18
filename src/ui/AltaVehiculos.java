@@ -3,10 +3,8 @@ package src.ui;
 import src.clases.Avion;
 import src.clases.Barco;
 import src.clases.Persona;
-import src.clases.Vehiculo;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -52,7 +50,7 @@ public class AltaVehiculos extends javax.swing.JFrame {
                     } else if (cbxTipo.getSelectedItem().toString() == "Barco") {
                         Barco barco = new Barco();
                         barco.matricula = txtMatricula.getText().toString();
-                        barco.nombre = txtMatricula.getText().toString();
+                        barco.nombre = txtNombre.getText().toString();
                         barco.color = txtColor.getText().toString();
                         barco.eslora = Double.parseDouble(txtVari1.getText());
                         barco.manga = Double.parseDouble(txtVari2.getText());
@@ -71,7 +69,7 @@ public class AltaVehiculos extends javax.swing.JFrame {
                     } else if (cbxTipo.getSelectedItem().toString() == "Avion") {
                         Avion avion = new Avion();
                         avion.matricula = txtMatricula.getText().toString();
-                        avion.nombre = txtMatricula.getText().toString();
+                        avion.nombre = txtNombre.getText().toString();
                         avion.color = txtColor.getText().toString();
                         avion.longitud = Double.parseDouble(txtVari1.getText());
                         avion.cantPasajeros = Integer.parseInt(txtVari2.getText());
@@ -96,11 +94,6 @@ public class AltaVehiculos extends javax.swing.JFrame {
         });
 
     }
-
-    DefaultTableModel modelo = new DefaultTableModel();
-    ArrayList<Vehiculo> vehiculos = new ArrayList();
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">

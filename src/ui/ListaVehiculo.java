@@ -1,10 +1,12 @@
 package src.ui;
 
-import src.*;
 import src.clases.Avion;
 import src.clases.Barco;
 import src.clases.Vehiculo;
+
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 
@@ -14,62 +16,54 @@ public class ListaVehiculo extends javax.swing.JFrame {
         super.setDefaultCloseOperation(operation);
     }
 
-    private ArrayList<Vehiculo> listaVehiculos = new ArrayList<>();
     private ArrayList<Avion> listaVehiculosAviones = new ArrayList<>();
     private ArrayList<Barco> listaVehiculosBarcos = new ArrayList<>();
 
     DefaultTableModel modeloVehiculos = new DefaultTableModel();
-    DefaultTableModel modeloVehiculosAvion = new DefaultTableModel();
-    DefaultTableModel modeloVehiculosBarco = new DefaultTableModel();
+
 
 
     public ListaVehiculo() {
         initComponents();
+
+        setTitle("Lista de Vehiculos");
+        setContentPane(jPanel1);
+        pack();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+
         listaVehiculosAviones = AltaVehiculos.altaListaVehiculosAviones;
         listaVehiculosBarcos = AltaVehiculos.altaListaVehiculosBarcos;
+
         actualizarTablas();
     }
-
+    int cont = 0;
     public void actualizarTablas() {
+        modeloVehiculos.setRowCount(0);
+        
+        if(cbxTipo.getSelectedItem().toString() == "Todos"){
+            String[] titulo = new String[]{"Matricula", "Nombre", "Color", "Propietario"};
+            modeloVehiculos.setColumnIdentifiers(titulo);
+            tblVehiculos.setModel(modeloVehiculos);
+            refrescarTablaVehiculosTodos();
+        } else if (cbxTipo.getSelectedItem().toString() == "Barcos") {
+            String[] titulo = new String[]{"Matricula", "Nombre", "Color", "Propietario", "Eslora", "manga"};
+            modeloVehiculos.setColumnIdentifiers(titulo);
+            tblVehiculos.setModel(modeloVehiculos);
+            refrescarTablaVehiculosBarcos();
+        } else {
+            String[] titulo = new String[]{"Matricula", "Nombre", "Color", "Propietario", "Longitud", "Cantidad Pasajeros"};
+            modeloVehiculos.setColumnIdentifiers(titulo);
+            tblVehiculos.setModel(modeloVehiculos);
+            refrescarTablaVehiculosAviones();
+        }
 
-        modeloVehiculos.addColumn("Matricula");
-        modeloVehiculos.addColumn("Nombre");
-        modeloVehiculos.addColumn("Color");
-        modeloVehiculos.addColumn("Propietario");
-        modeloVehiculosAvion.addColumn("Matricula");
-        modeloVehiculosAvion.addColumn("Nombre");
-        modeloVehiculosAvion.addColumn("Color");
-        modeloVehiculosAvion.addColumn("Propietario");
-        modeloVehiculosAvion.addColumn("Longitud");
-        modeloVehiculosAvion.addColumn("Cantidad Pasajeros");
-        modeloVehiculosBarco.addColumn("Matricula");
-        modeloVehiculosBarco.addColumn("Nombre");
-        modeloVehiculosBarco.addColumn("Color");
-        modeloVehiculosBarco.addColumn("Propietario");
-        modeloVehiculosBarco.addColumn("Eslora");
-        modeloVehiculosBarco.addColumn("Manga");
-
-        refrescarTablaVehiculosAviones();
-        refrescarTablaVehiculosTodos();
-        refrescarTablaVehiculosBarcos();
     }
 
     private void refrescarTablaVehiculosTodos() {
-        TablaVehiculos.setModel(modeloVehiculos);
-
-        //Recorremos el array y rellenamos la tabla
-        for (Vehiculo vehiculo : listaVehiculos) {
-            Object a[] = new Object[4];
-            a[0] = vehiculo.getMatricula();
-            a[1] = vehiculo.getNombre();
-            a[2] = vehiculo.getColor();
-            a[3] = vehiculo.toStringID();
-            modeloVehiculos.addRow(a);
-        }
-    }
-
-    private void refrescarTablaVehiculosAviones() {
-        TablaVehiculos4.setModel(modeloVehiculosAvion);
+        tblVehiculos.setModel(modeloVehiculos);
 
         //Recorremos el array y rellenamos la tabla
         for (Avion avion : listaVehiculosAviones) {
@@ -80,76 +74,92 @@ public class ListaVehiculo extends javax.swing.JFrame {
             b[3] = avion.toStringID();
             b[4] = avion.getLongitud();
             b[5] = avion.getCantPasajeros();
-            modeloVehiculosAvion.addRow(b);
             modeloVehiculos.addRow(b);
+            cont++;
+        }
+
+        for (Barco barco : listaVehiculosBarcos) {
+            Object b[] = new Object[6];
+            b[0] = barco.getMatricula();
+            b[1] = barco.getNombre();
+            b[2] = barco.getColor();
+            b[3] = barco.toStringID();
+            b[4] = barco.getEslora();
+            b[5] = barco.getManga();
+            modeloVehiculos.addRow(b);
+            cont++;
         }
 
     }
 
     private void refrescarTablaVehiculosBarcos() {
-        TablaVehiculos3.setModel(modeloVehiculosBarco);
+        tblVehiculos.setModel(modeloVehiculos);
 
         //Recorremos el array y rellenamos la tabla
         for (Barco barco : listaVehiculosBarcos) {
-            Object c[] = new Object[6];
-            c[0] = barco.getMatricula();
-            c[1] = barco.getNombre();
-            c[2] = barco.getColor();
-            c[3] = barco.toStringID();
-            c[4] = barco.getEslora();
-            c[5] = barco.getManga();
-            modeloVehiculosBarco.addRow(c);
-            modeloVehiculos.addRow(c);
+            Object b[] = new Object[6];
+            b[0] = barco.getMatricula();
+            b[1] = barco.getNombre();
+            b[2] = barco.getColor();
+            b[3] = barco.toStringID();
+            b[4] = barco.getEslora();
+            b[5] = barco.getManga();
+            modeloVehiculos.addRow(b);
+            cont++;
         }
 
-        TablaVehiculos.setModel(modeloVehiculos);
+    }
+
+    private void refrescarTablaVehiculosAviones() {
+        tblVehiculos.setModel(modeloVehiculos);
+
+        //Recorremos el array y rellenamos la tabla
+        for (Avion avion : listaVehiculosAviones) {
+            Object b[] = new Object[6];
+            b[0] = avion.getMatricula();
+            b[1] = avion.getNombre();
+            b[2] = avion.getColor();
+            b[3] = avion.toStringID();
+            b[4] = avion.getLongitud();
+            b[5] = avion.getCantPasajeros();
+            modeloVehiculos.addRow(b);
+            cont++;
+        }
+
     }
 
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-        setVisible(true);
-        setResizable(false);
+
         jPanel1 = new javax.swing.JPanel();
-        btnAplicarFiltro = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablaVehiculos = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        cbxFiltro = new javax.swing.JComboBox<>();
-        txtFiltro = new javax.swing.JTextField();
         btnVolver = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        TablaVehiculos3 = new javax.swing.JTable();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        TablaVehiculos4 = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblVehiculos = new javax.swing.JTable();
+        lblCapyBash = new javax.swing.JLabel();
+        lblDashboard = new javax.swing.JLabel();
+        txtFiltro = new javax.swing.JTextField();
+        cbxTipo = new javax.swing.JComboBox<>();
+        lblFiltro = new javax.swing.JLabel();
+        btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 276, Short.MAX_VALUE)
-        );
+        jPanel1.setBackground(new java.awt.Color(221, 138, 36));
 
-        btnAplicarFiltro.setActionCommand("Aplicar");
-        btnAplicarFiltro.setLabel("Aplicar");
-        btnAplicarFiltro.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setBackground(new java.awt.Color(240, 167, 50));
+        btnVolver.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAplicarFiltroActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
-        TablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
+        tblVehiculos.setBackground(new java.awt.Color(236, 183, 64));
+        tblVehiculos.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                         {null, null, null, null},
                         {null, null, null, null},
@@ -160,141 +170,110 @@ public class ListaVehiculo extends javax.swing.JFrame {
                         "ID", "Nombre", "Color", "Propietario"
                 }
         ));
-        jScrollPane1.setViewportView(TablaVehiculos);
+        jScrollPane1.setViewportView(tblVehiculos);
 
-        jLabel1.setFont(new java.awt.Font("Unispace", 0, 18)); // NOI18N
-        jLabel1.setText("Listado de Vehiculos");
+        lblCapyBash.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        lblCapyBash.setForeground(new java.awt.Color(255, 255, 255));
+        lblCapyBash.setText("CapyBash:");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Filtro:");
+        lblDashboard.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lblDashboard.setForeground(new java.awt.Color(255, 255, 255));
+        lblDashboard.setText("Listado De Vehiculos");
 
-        cbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nombre", "Color", "Propietario", "Tipo" }));
-        cbxFiltro.addActionListener(new java.awt.event.ActionListener() {
+        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Barcos", "Aviones" }));
+        cbxTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxFiltroActionPerformed(evt);
+                cbxTipoActionPerformed(evt);
             }
         });
 
-        btnVolver.setLabel("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+        lblFiltro.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        lblFiltro.setForeground(new java.awt.Color(255, 255, 255));
+        lblFiltro.setText("Filtro:");
+
+        btnActualizar.setBackground(new java.awt.Color(240, 167, 50));
+        btnActualizar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Todos");
-
-        jLabel5.setText("Aviones");
-
-        jLabel6.setText("Botes");
-
-        TablaVehiculos3.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                        {null, null, null, null, null, null},
-                        {null, null, null, null, null, null},
-                        {null, null, null, null, null, null},
-                        {null, null, null, null, null, null}
-                },
-                new String [] {
-                        "ID", "Nombre", "Color", "Propietario", "Eslora", "Manga"
-                }
-        ));
-        jScrollPane4.setViewportView(TablaVehiculos3);
-
-        TablaVehiculos4.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                        {null, null, null, null, null, null},
-                        {null, null, null, null, null, null},
-                        {null, null, null, null, null, null},
-                        {null, null, null, null, null, null}
-                },
-                new String [] {
-                        "ID", "Nombre", "Color", "Propietario", "Longitud", "Cantidad Pasajeros"
-                }
-        ));
-        jScrollPane5.setViewportView(TablaVehiculos4);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(172, 172, 172)
+                                .addComponent(lblCapyBash)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblDashboard)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap(44, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(lblFiltro)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(btnVolver)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnActualizar)))
+                                .addGap(39, 39, 39))
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblDashboard)
+                                        .addComponent(lblCapyBash))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblFiltro)
+                                        .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnVolver)
+                                        .addComponent(btnActualizar))
+                                .addContainerGap(29, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(jLabel2)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(cbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(25, 25, 25)
-                                                                .addComponent(btnAplicarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addComponent(jLabel4)
-                                                        .addComponent(jLabel5)
-                                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(14, 14, 14))
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(255, 255, 255)
-                                .addComponent(jLabel1)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel1)
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel6)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(jLabel2)
-                                                        .addComponent(cbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(btnAplicarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(11, 11, 11))
-                                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap())
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>
 
-    private void btnAplicarFiltroActionPerformed(java.awt.event.ActionEvent evt) {
+    private void cbxTipoActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
-    private void cbxFiltroActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {
+        actualizarTablas();
     }
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {
-        // Cierra la ventana actual
         this.dispose();
     }
+
 
     public static void main(String args[]) {
 
@@ -306,22 +285,16 @@ public class ListaVehiculo extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify
-    private javax.swing.JTable TablaVehiculos;
-    private javax.swing.JTable TablaVehiculos3;
-    private javax.swing.JTable TablaVehiculos4;
-    private javax.swing.JButton btnAplicarFiltro;
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JComboBox<String> cbxFiltro;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JComboBox<String> cbxTipo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel lblCapyBash;
+    private javax.swing.JLabel lblDashboard;
+    private javax.swing.JLabel lblFiltro;
+    private javax.swing.JTable tblVehiculos;
     private javax.swing.JTextField txtFiltro;
-    // End of variables declaration
+    // End of variables declaration                   
 }
