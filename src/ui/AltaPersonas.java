@@ -136,7 +136,6 @@ public class AltaPersonas extends javax.swing.JFrame {
         lblFiltrarPor = new javax.swing.JLabel();
         txtIDFiltro = new java.awt.TextField();
         lblAgregarPersona = new javax.swing.JLabel();
-        cbxFiltro = new javax.swing.JComboBox<>();
         btnVolver = new javax.swing.JButton();
         lblCapyBash = new javax.swing.JLabel();
         lblAltaDePersonas = new javax.swing.JLabel();
@@ -149,27 +148,27 @@ public class AltaPersonas extends javax.swing.JFrame {
 
         Panel.setBackground(new java.awt.Color(221, 138, 36));
 
-        lblID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        lblID.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         lblID.setForeground(new java.awt.Color(255, 255, 255));
         lblID.setText("ID");
 
-        lblApellido.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        lblApellido.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         lblApellido.setForeground(new java.awt.Color(255, 255, 255));
         lblApellido.setText("Apellido");
 
-        lblNombre.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombre");
 
-        lblHijos.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        lblHijos.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         lblHijos.setForeground(new java.awt.Color(255, 255, 255));
         lblHijos.setText("Hijos");
 
-        lblDepto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        lblDepto.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         lblDepto.setForeground(new java.awt.Color(255, 255, 255));
         lblDepto.setText("Depto.");
 
-        lblFechaNac.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        lblFechaNac.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         lblFechaNac.setForeground(new java.awt.Color(255, 255, 255));
         lblFechaNac.setText("FechaNac.");
 
@@ -232,7 +231,7 @@ public class AltaPersonas extends javax.swing.JFrame {
 
         spnHijos.setAutoscrolls(true);
 
-        lblFiltrarPor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        lblFiltrarPor.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         lblFiltrarPor.setForeground(new java.awt.Color(255, 255, 255));
         lblFiltrarPor.setText("Filtrar por ID");
 
@@ -247,17 +246,9 @@ public class AltaPersonas extends javax.swing.JFrame {
             }
         });
 
-        lblAgregarPersona.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        lblAgregarPersona.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         lblAgregarPersona.setForeground(new java.awt.Color(255, 255, 255));
         lblAgregarPersona.setText("Información de la persona:");
-
-        cbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"ID", "Nombre", "Apellido", "Hijos", "Depto", "FechaNac"}));
-        cbxFiltro.setName(""); // NOI18N
-        cbxFiltro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxFiltroActionPerformed(evt);
-            }
-        });
 
         btnVolver.setBackground(new java.awt.Color(240, 167, 50));
         btnVolver.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -322,11 +313,9 @@ public class AltaPersonas extends javax.swing.JFrame {
                                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGroup(PanelLayout.createSequentialGroup()
                                                                 .addComponent(lblFiltrarPor)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(cbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(28, 28, 28)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(txtIDFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addContainerGap(24, Short.MAX_VALUE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelLayout.setVerticalGroup(
                 PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,16 +324,15 @@ public class AltaPersonas extends javax.swing.JFrame {
                                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(lblCapyBash)
                                         .addComponent(lblAltaDePersonas))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(PanelLayout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
                                                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                .addComponent(lblFiltrarPor)
-                                                                .addComponent(cbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(lblFiltrarPor)
                                                         .addComponent(txtIDFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(19, 19, 19))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(lblAgregarPersona)
                                                 .addGap(18, 18, 18)))
                                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -401,10 +389,6 @@ public class AltaPersonas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    private void cbxFiltroActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
     private void txtIDFiltroKeyTyped(java.awt.event.KeyEvent evt) {
 
         txtIDFiltro.addKeyListener(new KeyAdapter() {
@@ -447,16 +431,18 @@ public class AltaPersonas extends javax.swing.JFrame {
     }
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {
-        // Cierra la ventana actual
         this.dispose();
     }
 
 
     TableRowSorter trs;
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
 
-        AltaPersonas altaPersonas = new AltaPersonas();
+        AltaPersonas ventana = new AltaPersonas();
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -481,7 +467,6 @@ public class AltaPersonas extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbxDepto;
-    private javax.swing.JComboBox<String> cbxFiltro;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -502,6 +487,5 @@ public class AltaPersonas extends javax.swing.JFrame {
     private java.awt.TextField txtID;
     private java.awt.TextField txtIDFiltro;
     private java.awt.TextField txtNombre;
-    // End of variables declaration
-
+// End of variables declaration
 }

@@ -6,7 +6,10 @@ import src.clases.Vehiculo;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 
@@ -42,7 +45,7 @@ public class ListaVehiculo extends javax.swing.JFrame {
     int cont = 0;
     public void actualizarTablas() {
         modeloVehiculos.setRowCount(0);
-        
+
         if(cbxTipo.getSelectedItem().toString() == "Todos"){
             String[] titulo = new String[]{"Matricula", "Nombre", "Color", "Propietario"};
             modeloVehiculos.setColumnIdentifiers(titulo);
@@ -180,6 +183,17 @@ public class ListaVehiculo extends javax.swing.JFrame {
         lblDashboard.setForeground(new java.awt.Color(255, 255, 255));
         lblDashboard.setText("Listado De Vehiculos");
 
+        txtFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFiltroActionPerformed(evt);
+            }
+        });
+        txtFiltro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFiltroKeyTyped(evt);
+            }
+        });
+
         cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Barcos", "Aviones" }));
         cbxTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +203,7 @@ public class ListaVehiculo extends javax.swing.JFrame {
 
         lblFiltro.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         lblFiltro.setForeground(new java.awt.Color(255, 255, 255));
-        lblFiltro.setText("Filtro:");
+        lblFiltro.setText("Filtro por Matricula:");
 
         btnActualizar.setBackground(new java.awt.Color(240, 167, 50));
         btnActualizar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -270,8 +284,27 @@ public class ListaVehiculo extends javax.swing.JFrame {
         actualizarTablas();
     }
 
+
+
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
+    }
+
+    private void txtFiltroActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+    TableRowSorter trs;
+    private void txtFiltroKeyTyped(java.awt.event.KeyEvent evt) {
+        txtFiltro.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+                trs.setRowFilter(RowFilter.regexFilter( "(?i)" + txtFiltro.getText(), 0));
+            }
+        });
+
+        trs = new TableRowSorter(modeloVehiculos);
+        tblVehiculos.setRowSorter(trs);
     }
 
 
@@ -285,7 +318,7 @@ public class ListaVehiculo extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbxTipo;
@@ -296,5 +329,5 @@ public class ListaVehiculo extends javax.swing.JFrame {
     private javax.swing.JLabel lblFiltro;
     private javax.swing.JTable tblVehiculos;
     private javax.swing.JTextField txtFiltro;
-    // End of variables declaration                   
+    // End of variables declaration
 }
