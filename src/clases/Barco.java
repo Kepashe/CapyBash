@@ -5,6 +5,10 @@ public class Barco extends Vehiculo{
     public double eslora;
     public double manga;
 
+    public Barco() {
+
+    }
+
     @Override
     public String toString() {
         return "Barco{" +

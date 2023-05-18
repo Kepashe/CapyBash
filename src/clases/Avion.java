@@ -5,6 +5,10 @@ public class Avion extends Vehiculo{
     public double longitud;
     public int cantPasajeros;
 
+    public Avion() {
+
+    }
+
     @Override
     public String toString() {
         return "Barco{" +

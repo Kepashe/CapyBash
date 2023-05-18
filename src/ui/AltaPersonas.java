@@ -21,7 +21,7 @@ import javax.swing.table.TableRowSorter;
 
 public class AltaPersonas extends javax.swing.JFrame {
     DefaultTableModel modelo = new DefaultTableModel(); //Para mostrarlos en una tabla
-    ArrayList<Persona> listaPersonas = new ArrayList<Persona>(); //Array para guardar las personas
+    public static ArrayList<Persona> listaPersonas = new ArrayList<Persona>(); //Array para guardar las personas
 
     public AltaPersonas() {
         initComponents();

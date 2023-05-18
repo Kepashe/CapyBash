@@ -1,8 +1,20 @@
 package src.ui;
 
+import src.clases.Avion;
+import src.clases.Barco;
+import src.clases.Persona;
+import src.clases.Vehiculo;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class AltaVehiculos extends javax.swing.JFrame {
+
+    public static ArrayList<Barco> altaListaVehiculosBarcos = new ArrayList<>();
+    public static ArrayList<Avion> altaListaVehiculosAviones = new ArrayList<>();
 
     public AltaVehiculos() {
         initComponents();
@@ -12,14 +24,66 @@ public class AltaVehiculos extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+
+        cbxTipo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(cbxTipo.getSelectedItem().toString() == "Tipo"){
+                    lblVari1.setText("-");
+                    lblVari2.setText("-");
+                }else if(cbxTipo.getSelectedItem().toString() == "Barco"){
+                    lblVari1.setText("Eslora");
+                    lblVari2.setText("Manga");
+                }else if(cbxTipo.getSelectedItem().toString() == "Avion"){
+                    lblVari1.setText("Longitud");
+                    lblVari2.setText("Cant.Pasajeros");
+                }
+            }
+        });
+
+
+        btnGuardar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if (cbxTipo.getSelectedItem().toString() == "Tipo") {
+                        JOptionPane.showMessageDialog(null, "Seleccione un tipo de vehículo");
+                    } else if (cbxTipo.getSelectedItem().toString() == "Barco") {
+                        Barco barco = new Barco();
+                        barco.matricula = txtMatricula.getText().toString();
+                        barco.nombre = txtMatricula.getText().toString();
+                        barco.color = txtColor.getText().toString();
+                        barco.eslora = Double.parseDouble(txtVari1.getText());
+                        barco.manga = Double.parseDouble(txtVari2.getText());
+                        barco.propietario.setIdPersona(Integer.parseInt(txtDuenio.getText()));
+                        altaListaVehiculosBarcos.add(barco);
+                    } else if (cbxTipo.getSelectedItem().toString() == "Avion") {
+                        Avion avion = new Avion();
+                        avion.matricula = txtMatricula.getText().toString();
+                        avion.nombre = txtMatricula.getText().toString();
+                        avion.color = txtColor.getText().toString();
+                        avion.longitud = Double.parseDouble(txtVari1.getText());
+                        avion.cantPasajeros = Integer.parseInt(txtVari2.getText());
+                        avion.propietario.setIdPersona(Integer.parseInt(txtDuenio.getText())); //arreglar
+                        altaListaVehiculosAviones.add(avion);
+                    }
+
+                } catch (Exception e1){
+                    System.out.println(e1);
+                }
+            }
+        });
+
     }
+
+    DefaultTableModel modelo = new DefaultTableModel();
+    ArrayList<Vehiculo> vehiculos = new ArrayList();
+
 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-
-
 
         jPanel1 = new javax.swing.JPanel();
         lblCapyBash = new javax.swing.JLabel();
@@ -40,6 +104,8 @@ public class AltaVehiculos extends javax.swing.JFrame {
         txtColor = new javax.swing.JTextField();
         lblInformacionVehiculo = new javax.swing.JLabel();
         lblGuardado = new javax.swing.JLabel();
+        txtDuenio = new javax.swing.JTextField();
+        lblDueño = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(221, 138, 36));
@@ -106,6 +172,10 @@ public class AltaVehiculos extends javax.swing.JFrame {
 
         lblGuardado.setForeground(new java.awt.Color(255, 255, 255));
 
+        lblDueño.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        lblDueño.setForeground(new java.awt.Color(255, 255, 255));
+        lblDueño.setText("Dueño");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -122,25 +192,28 @@ public class AltaVehiculos extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblInformacionVehiculo))
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(lblVari2)
                                                         .addComponent(lblMatricula)
                                                         .addComponent(lblNombre)
                                                         .addComponent(lblColor)
-                                                        .addComponent(lblVari1))
+                                                        .addComponent(lblVari1)
+                                                        .addComponent(lblDueño))
                                                 .addGap(23, 23, 23)
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addComponent(txtVari1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                                                        .addComponent(txtColor, javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(txtMatricula, javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(txtVari2))
-                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(lblInformacionVehiculo))
-                                                .addGap(0, 0, Short.MAX_VALUE))))
+                                                        .addComponent(txtDuenio, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addComponent(txtVari1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                                                .addComponent(txtColor, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(txtMatricula, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(txtVari2)))
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,7 +242,11 @@ public class AltaVehiculos extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(txtVari2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lblVari2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtDuenio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblDueño))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(btnGuardar)
@@ -203,7 +280,7 @@ public class AltaVehiculos extends javax.swing.JFrame {
                                         .addComponent(lblAltaDeVehiculos))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(16, Short.MAX_VALUE))
+                                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -272,6 +349,7 @@ public class AltaVehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel lblAltaDeVehiculos;
     private javax.swing.JLabel lblCapyBash;
     private javax.swing.JLabel lblColor;
+    private javax.swing.JLabel lblDueño;
     private javax.swing.JLabel lblGuardado;
     private javax.swing.JLabel lblInformacionVehiculo;
     private javax.swing.JLabel lblMatricula;
@@ -279,6 +357,7 @@ public class AltaVehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel lblVari1;
     private javax.swing.JLabel lblVari2;
     private javax.swing.JTextField txtColor;
+    private javax.swing.JTextField txtDuenio;
     private javax.swing.JTextField txtMatricula;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtVari1;

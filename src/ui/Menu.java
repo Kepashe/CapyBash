@@ -9,6 +9,8 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         setTitle("Menú");
         setLocationRelativeTo(null);
+        setVisible(true);
+        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -29,6 +31,7 @@ public class Menu extends javax.swing.JFrame {
         btnAltaPersonas = new javax.swing.JButton();
         btnAltaVehiculos = new javax.swing.JButton();
         btnListaVehiculos = new javax.swing.JButton();
+        btnDashboard = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,28 +94,42 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnDashboard.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        btnDashboard.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
+        btnDashboard.setForeground(new java.awt.Color(255, 255, 255));
+        btnDashboard.setText("Dashboard");
+        btnDashboard.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDashboardActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addContainerGap(80, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnListaVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnAltaVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnAltaPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                                        .addComponent(btnListaVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                                        .addComponent(btnAltaVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                                        .addComponent(btnAltaPersonas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(79, 79, 79))
         );
         jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
+                                .addGap(14, 14, 14)
                                 .addComponent(btnAltaPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAltaVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnListaVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(55, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -226,6 +243,13 @@ public class Menu extends javax.swing.JFrame {
         });
     }
 
+    private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {
+        // Crea una nueva instancia de la ventana de lista de vehículos
+        Dashboard dashboard = new Dashboard();
+        // Cierra la ventana actual
+        this.dispose();
+    }
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -254,6 +278,7 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify
     private javax.swing.JButton btnAltaPersonas;
     private javax.swing.JButton btnAltaVehiculos;
+    private javax.swing.JButton btnDashboard;
     private javax.swing.JButton btnListaVehiculos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

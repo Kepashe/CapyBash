@@ -25,9 +25,8 @@ public class ListaVehiculo extends javax.swing.JFrame {
 
     public ListaVehiculo() {
         initComponents();
-        listaVehiculos = Main.listaVehiculosMain;
-        listaVehiculosAviones = Main.listaVehiculosAvionesMain;
-        listaVehiculosBarcos = Main.listaVehiculosBarcosMain;
+        listaVehiculosAviones = AltaVehiculos.altaListaVehiculosAviones;
+        listaVehiculosBarcos = AltaVehiculos.altaListaVehiculosBarcos;
         actualizarTablas();
     }
 
@@ -297,9 +296,6 @@ public class ListaVehiculo extends javax.swing.JFrame {
         this.dispose();
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
