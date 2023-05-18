@@ -50,13 +50,19 @@ public class AltaPersonas extends javax.swing.JFrame {
                     LocalDate fechaActual = LocalDate.now();
                     // Creamos una instancia de la clase Persona
                     Persona persona = new Persona();
+
                     int idPersona = Integer.parseInt(txtID.getText());
+
+
                     // Chequeamos que esa ID no exista ya
                     boolean idsExistentes = listaPersonas.stream().anyMatch(p -> p.getIdPersona() == idPersona);
                     if (idsExistentes) {
                         JOptionPane.showMessageDialog(null, "Error: Ya existe esa ID.");
                         return;
+                    }else{
+                        persona.setIdPersona(idPersona);
                     }
+
                     persona.setNombre(txtNombre.getText());
                     persona.setApellido(txtApellido.getText());
                     // Obtener el valor del JSpinner y convertirlo a byte
