@@ -61,6 +61,7 @@ public class AltaVehiculos extends javax.swing.JFrame {
                                 barco.propietario = persona;
                                 encuentro = true;
                                 altaListaVehiculosBarcos.add(barco);
+                                JOptionPane.showMessageDialog(null, "¡Barco Agregado!");
                             }
                         }
                         if(encuentro == false){
@@ -80,6 +81,7 @@ public class AltaVehiculos extends javax.swing.JFrame {
                                 avion.propietario = persona;
                                 encuentro = true;
                                 altaListaVehiculosAviones.add(avion);
+                                JOptionPane.showMessageDialog(null, "¡Avión Agregado!");
                             }
                         }
                         if(encuentro == false){
