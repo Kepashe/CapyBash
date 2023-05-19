@@ -27,7 +27,7 @@ public class Main {
         listaPersonasMain.add(per2);
         listaPersonasMain.add(per3);
 
-        Barco bar1 = new Barco("M4c442", "MANSOSOS Negra", "Verde Limo", per1, 34.5, 593.2);
+        Barco bar1 = new Barco("M4c442", "Negra Negra", "Verde Limo", per1, 34.5, 593.2);
         Barco bar2 = new Barco("423cCD", "Manza Nutia", "Óxido", per2, 56, 15.55);
         Barco bar3 = new Barco("5428DE", "Mathias", "Color agua", per3, 34.5, 15.5);
 

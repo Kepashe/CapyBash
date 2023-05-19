@@ -28,6 +28,7 @@ public class Dashboard extends javax.swing.JFrame {
             }else {
                 promedio = cantVehiculos / cantPersonas;
             }
+            String display = String.format("%.2f", promedio);
 
 
             jPanel6 = new javax.swing.JPanel();
@@ -99,7 +100,7 @@ public class Dashboard extends javax.swing.JFrame {
 
             lblPersonasIngresadas.setFont(new java.awt.Font("Segoe UI Black", 0, 70)); // NOI18N
             lblPersonasIngresadas.setForeground(new java.awt.Color(255, 255, 255));
-            lblPersonasIngresadas.setText(Double.toString(cantPersonas1));
+            lblPersonasIngresadas.setText(Integer.toString(cantPersonas1));
 
             javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
             jPanel4.setLayout(jPanel4Layout);
@@ -133,7 +134,7 @@ public class Dashboard extends javax.swing.JFrame {
 
             lblPromedio.setFont(new java.awt.Font("Segoe UI Black", 0, 70)); // NOI18N
             lblPromedio.setForeground(new java.awt.Color(255, 255, 255));
-            lblPromedio.setText(Double.toString(promedio));
+            lblPromedio.setText(display);
 
             javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
             jPanel5.setLayout(jPanel5Layout);
@@ -168,7 +169,7 @@ public class Dashboard extends javax.swing.JFrame {
 
             lblVehiculosIngresados.setFont(new java.awt.Font("Segoe UI Black", 0, 70)); // NOI18N
             lblVehiculosIngresados.setForeground(new java.awt.Color(255, 255, 255));
-            lblVehiculosIngresados.setText(Double.toString(cantVehiculos1));
+            lblVehiculosIngresados.setText(Integer.toString(cantVehiculos1));
 
             javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
             jPanel7.setLayout(jPanel7Layout);
